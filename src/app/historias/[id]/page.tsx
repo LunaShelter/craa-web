@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { animalsService } from '@/services/animalsService';
 import { StatusBadge } from '@/components/ui/Badge';
 import { animals } from '@/data/animals';
-import { ctaButtonClasses } from '@/lib/designTokens';
 
 export async function generateStaticParams() {
   return animals.map((a) => ({ id: a.id }));
@@ -28,52 +27,68 @@ export default async function AnimalPage({ params }: { params: Promise<{ id: str
 
   return (
     <div>
-      <section className="bg-[#012B4E] text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <Link href="/historias" className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-6 transition-colors">
+      {/* Hero */}
+      <section className="bg-[#012B4E] text-white py-20">
+        <div className="max-w-[1200px] mx-auto px-6 text-center">
+          <Link href="/historias" className="inline-flex items-center gap-2 text-white/40 hover:text-white/80 text-sm mb-6 transition-colors">
             ← Volver a historias
           </Link>
-          <h1 className="text-4xl md:text-5xl font-bold mb-3">{animal.name}</h1>
-          <div className="flex items-center justify-center gap-3 flex-wrap">
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight">{animal.name}</h1>
+          <div className="flex items-center justify-center gap-2 flex-wrap">
             <StatusBadge status={animal.status} />
-            <span className="bg-white/10 text-white/80 px-3 py-1 rounded-full text-sm">{animal.age}</span>
-            {animal.breed && <span className="bg-white/10 text-white/80 px-3 py-1 rounded-full text-sm">{animal.breed}</span>}
+            <span className="bg-white/8 text-white/70 px-3 py-1 rounded-lg text-xs font-semibold">{animal.age}</span>
+            {animal.breed && <span className="bg-white/8 text-white/70 px-3 py-1 rounded-lg text-xs font-semibold">{animal.breed}</span>}
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
+      <section className="py-20 bg-white">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+            {/* Image */}
+            <div className="relative rounded-2xl overflow-hidden shadow-[0_12px_40px_0_rgba(1,43,78,0.15)]" style={{ aspectRatio: '4/3' }}>
               <Image src={animal.image} alt={`Foto de ${animal.name}`} fill className="object-cover" />
             </div>
+
+            {/* Content */}
             <div>
-              <h2 className="text-2xl font-bold text-[#012B4E] mb-4">La historia de {animal.name}</h2>
-              <p className="text-gray-600 leading-relaxed text-lg mb-6">{animal.story}</p>
+              <h2 className="text-3xl font-extrabold text-[#012B4E] mb-5 tracking-tight leading-tight">
+                La historia de {animal.name}
+              </h2>
+              <p className="text-[#4A6580] leading-relaxed text-base mb-8">{animal.story}</p>
+
+              {/* Detail chips */}
               {animal.weight && (
-                <div className="flex gap-4 mb-8">
-                  <div className="bg-[#FFF5EC] rounded-xl p-4 flex-1 text-center">
-                    <p className="text-xs text-gray-400 uppercase mb-1">Peso</p>
-                    <p className="font-bold text-[#012B4E]">{animal.weight}</p>
+                <div className="grid grid-cols-3 gap-3 mb-8">
+                  <div className="bg-[#F7EAD8] rounded-xl p-4 text-center border border-[#E8D9C8]">
+                    <p className="text-[10px] text-[#7A93A8] uppercase tracking-widest font-bold mb-1">Peso</p>
+                    <p className="font-bold text-[#012B4E] text-sm">{animal.weight}</p>
                   </div>
-                  <div className="bg-[#FFF5EC] rounded-xl p-4 flex-1 text-center">
-                    <p className="text-xs text-gray-400 uppercase mb-1">Tipo</p>
-                    <p className="font-bold text-[#012B4E] capitalize">{animal.type}</p>
+                  <div className="bg-[#F7EAD8] rounded-xl p-4 text-center border border-[#E8D9C8]">
+                    <p className="text-[10px] text-[#7A93A8] uppercase tracking-widest font-bold mb-1">Tipo</p>
+                    <p className="font-bold text-[#012B4E] text-sm capitalize">{animal.type}</p>
                   </div>
-                  <div className="bg-[#FFF5EC] rounded-xl p-4 flex-1 text-center">
-                    <p className="text-xs text-gray-400 uppercase mb-1">Edad</p>
-                    <p className="font-bold text-[#012B4E]">{animal.age}</p>
+                  <div className="bg-[#F7EAD8] rounded-xl p-4 text-center border border-[#E8D9C8]">
+                    <p className="text-[10px] text-[#7A93A8] uppercase tracking-widest font-bold mb-1">Edad</p>
+                    <p className="font-bold text-[#012B4E] text-sm">{animal.age}</p>
                   </div>
                 </div>
               )}
+
+              {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-3">
                 {animal.status === 'buscando-hogar' && (
-                  <Link href="/donar" className={`flex-1 text-center ${ctaButtonClasses} font-bold px-6 py-3 rounded-xl transition-all active:scale-95`}>
-                    QUIERO ADOPTARLO ❤️
+                  <Link
+                    href="/donar"
+                    className="flex-1 text-center inline-flex items-center justify-center bg-[#2BC4B5] hover:bg-[#22a99c] text-white font-bold px-6 py-3 rounded-xl transition-all active:scale-95 text-sm shadow-md"
+                  >
+                    QUIERO ADOPTARLO
                   </Link>
                 )}
-                <Link href="/donar" className="flex-1 text-center border-2 border-[#2BC4B5] text-[#2BC4B5] hover:bg-[#2BC4B5] hover:text-white font-bold px-6 py-3 rounded-xl transition-all active:scale-95">
+                <Link
+                  href="/donar"
+                  className="flex-1 text-center inline-flex items-center justify-center border-2 border-[#2BC4B5] text-[#2BC4B5] hover:bg-[#2BC4B5] hover:text-white font-bold px-6 py-3 rounded-xl transition-all active:scale-95 text-sm"
+                >
                   QUIERO APOYARLO
                 </Link>
               </div>

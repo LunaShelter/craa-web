@@ -1,28 +1,130 @@
 @import "tailwindcss";
 
+/* ============================================================
+   DESIGN SYSTEM — CRAA
+   Color palette: 60–70% cream/neutral, 20–30% azul, 5–10% accent
+   ============================================================ */
+
 :root {
-  --background: #FFF5EC;
-  --foreground: #012B4E;
-  --color-azul: #012B4E;
-  --color-turquesa: #2BC4B5;
-  --color-amarillo: #FEE35A;
+  /* Brand palette */
+  --color-azul:          #012B4E;
+  --color-azul-hover:    #024070;
+  --color-azul-light:    #0a3d6b;
+  --color-turquesa:      #2BC4B5;
+  --color-turquesa-hover:#22a99c;
+  --color-turquesa-muted:#2BC4B5/20;
+  --color-amarillo:      #FEE35A;
   --color-naranja-claro: #FEBE69;
-  --color-naranja: #FC9A36;
-  --color-coral: #FD544A;
-  --color-crema: #FFF5EC;
+  --color-naranja:       #FC9A36;
+  --color-coral:         #FD544A;
+  --color-coral-hover:   #e04540;
+  --color-crema:         #FFF5EC;
+  --color-crema-dark:    #F7EAD8;
+
+  /* Semantic tokens */
+  --background:          #FFF5EC;   /* 60-70%: page background */
+  --surface:             #FFFFFF;   /* component backgrounds */
+  --surface-muted:       #F7EAD8;   /* subtle surface variation */
+  --foreground:          #012B4E;   /* primary text */
+  --foreground-muted:    #4A6580;   /* secondary text */
+  --foreground-subtle:   #7A93A8;   /* captions, hints */
+  --border:              #E8D9C8;   /* borders */
+  --border-light:        #F0E6D8;   /* subtle borders */
+
+  /* Action tokens */
+  --primary:             #2BC4B5;   /* main action: teal */
+  --primary-hover:       #22a99c;
+  --primary-fg:          #FFFFFF;
+  --secondary:           #012B4E;   /* secondary action: dark blue */
+  --secondary-hover:     #024070;
+  --secondary-fg:        #FFFFFF;
+  --accent:              #FEE35A;   /* accent: yellow — use sparingly */
+  --accent-hover:        #f5d83a;
+  --accent-fg:           #012B4E;
+  --danger:              #FD544A;   /* urgent / error */
+  --danger-hover:        #e04540;
+  --danger-fg:           #FFFFFF;
+  --success:             #10B981;
+  --warning:             #FC9A36;
+
+  /* Shadow tokens */
+  --shadow-xs:    0 1px 2px 0 rgba(1,43,78,0.04);
+  --shadow-sm:    0 1px 3px 0 rgba(1,43,78,0.08), 0 1px 2px -1px rgba(1,43,78,0.04);
+  --shadow-md:    0 4px 6px -1px rgba(1,43,78,0.10), 0 2px 4px -2px rgba(1,43,78,0.06);
+  --shadow-lg:    0 10px 15px -3px rgba(1,43,78,0.12), 0 4px 6px -4px rgba(1,43,78,0.06);
+  --shadow-xl:    0 20px 25px -5px rgba(1,43,78,0.14), 0 8px 10px -6px rgba(1,43,78,0.06);
+  --shadow-card:  0 2px 8px 0 rgba(1,43,78,0.07), 0 0 0 1px rgba(1,43,78,0.04);
+
+  /* Radius tokens */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  24px;
+  --radius-full: 9999px;
+
+  /* Spacing scale (4px base) */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* Typography scale */
+  --text-xs:      0.75rem;    /* 12px — caption */
+  --text-sm:      0.875rem;   /* 14px — small */
+  --text-base:    1rem;       /* 16px — body */
+  --text-lg:      1.125rem;   /* 18px — body large */
+  --text-xl:      1.25rem;    /* 20px */
+  --text-2xl:     1.5rem;     /* 24px — H3 */
+  --text-3xl:     1.875rem;   /* 30px — H2 */
+  --text-4xl:     2.25rem;    /* 36px — H1 */
+  --text-5xl:     3rem;       /* 48px — Display */
+  --text-6xl:     3.75rem;    /* 60px — Hero */
+
+  /* Transition */
+  --transition-fast:   150ms ease;
+  --transition-base:   200ms ease;
+  --transition-slow:   300ms ease;
 }
 
+/* Expose to Tailwind v4 */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-azul: #012B4E;
-  --color-turquesa: #2BC4B5;
-  --color-amarillo: #FEE35A;
-  --color-naranja-claro: #FEBE69;
-  --color-naranja: #FC9A36;
-  --color-coral: #FD544A;
-  --color-crema: #FFF5EC;
+  --color-background:     var(--background);
+  --color-foreground:     var(--foreground);
+  --color-surface:        var(--surface);
+  --color-surface-muted:  var(--surface-muted);
+  --color-muted:          var(--foreground-muted);
+  --color-subtle:         var(--foreground-subtle);
+  --color-border:         var(--border);
+  --color-primary:        var(--primary);
+  --color-secondary:      var(--secondary);
+  --color-accent:         var(--accent);
+  --color-danger:         var(--danger);
+  --color-success:        var(--success);
+  --color-warning:        var(--warning);
+
+  /* Brand aliases */
+  --color-azul:           #012B4E;
+  --color-turquesa:       #2BC4B5;
+  --color-amarillo:       #FEE35A;
+  --color-naranja-claro:  #FEBE69;
+  --color-naranja:        #FC9A36;
+  --color-coral:          #FD544A;
+  --color-crema:          #FFF5EC;
+  --color-crema-dark:     #F7EAD8;
 }
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
 
 * {
   box-sizing: border-box;
@@ -37,30 +139,159 @@ body {
   color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Smooth transitions for interactive elements */
 a, button {
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
 }
 
-/* Custom scrollbar */
+/* ============================================================
+   CUSTOM SCROLLBAR
+   ============================================================ */
 ::-webkit-scrollbar {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #FFF5EC;
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2BC4B5;
+  background: var(--primary);
   border-radius: 3px;
 }
 
-/* Animations */
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+   ============================================================ */
+.text-display {
+  font-size: var(--text-6xl);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-h1 {
+  font-size: var(--text-5xl);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.text-h2 {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.text-h3 {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.text-body-lg {
+  font-size: var(--text-lg);
+  line-height: 1.7;
+}
+
+.text-body {
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+.text-caption {
+  font-size: var(--text-xs);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   COMPONENT UTILITIES
+   ============================================================ */
+
+/* Eyebrow badge — small label above section titles */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+}
+
+.eyebrow-primary {
+  background: rgba(43,196,181,0.12);
+  border: 1px solid rgba(43,196,181,0.3);
+  color: #1a9b8e;
+}
+
+.eyebrow-accent {
+  background: rgba(254,227,90,0.18);
+  border: 1px solid rgba(254,227,90,0.5);
+  color: #8a6d00;
+}
+
+.eyebrow-orange {
+  background: rgba(252,154,54,0.12);
+  border: 1px solid rgba(252,154,54,0.35);
+  color: #9e5800;
+}
+
+.eyebrow-white {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.9);
+}
+
+/* Section container */
+.section-container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+/* Card base */
+.card-base {
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow var(--transition-slow), transform var(--transition-slow);
+}
+
+.card-base:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.card-cream {
+  background: var(--surface-muted);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow var(--transition-slow), transform var(--transition-slow);
+}
+
+.card-cream:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(24px);
   }
   to {
     opacity: 1;
@@ -68,20 +299,55 @@ a, button {
   }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes countUp {
   from { opacity: 0; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
 
 @keyframes pulse-soft {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.02); }
+  50%       { transform: scale(1.02); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease forwards;
 }
 
+.animate-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease forwards;
+}
+
 .animate-pulse-soft {
   animation: pulse-soft 3s ease-in-out infinite;
 }
+
+/* Staggered children */
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 80ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 160ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 240ms; }

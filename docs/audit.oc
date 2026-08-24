@@ -1,0 +1,687 @@
+Quiero que hagas una **auditoría completa de UI/UX y un rediseño visual de la web actual**.
+
+IMPORTANTE: la estructura de contenido y las funcionalidades actuales son correctas. **No quiero que vuelvas a crear la web desde cero ni que cambies el contenido**, sino que mejores radicalmente su diseño, consistencia visual y experiencia de usuario.
+
+El objetivo es que la web pase de verse como una plantilla generada automáticamente a sentirse como un **producto digital profesional, moderno y de nivel premium**, comparable con una web de una organización moderna de protección animal.
+
+---
+
+# 1. PRIMERO: AUDITA LA WEB ACTUAL
+
+Antes de modificar componentes, revisa toda la aplicación y detecta:
+
+* Cards con alturas diferentes cuando deberían ser iguales.
+* Botones con tamaños, padding o estilos diferentes.
+* Espaciados inconsistentes.
+* Títulos con tamaños diferentes sin una razón de diseño.
+* Secciones que no están correctamente alineadas.
+* Diferencias innecesarias entre componentes similares.
+* Colores que no combinan correctamente.
+* Exceso de colores.
+* Contraste insuficiente.
+* Elementos visuales demasiado grandes o pequeños.
+* Bordes y border-radius inconsistentes.
+* Sombras inconsistentes.
+* Tipografías y pesos inconsistentes.
+* Secciones visualmente desconectadas.
+* Problemas de responsive design.
+* Elementos que parecen de diferentes páginas o diferentes aplicaciones.
+
+Después de identificar estos problemas, corrígelos de forma global.
+
+---
+
+# 2. CREA UN DESIGN SYSTEM GLOBAL
+
+No diseñes cada sección individualmente.
+
+Primero establece un sistema visual que toda la aplicación debe seguir.
+
+Crear variables/tokens para:
+
+### Colores
+
+### Tipografía
+
+### Espaciado
+
+### Border radius
+
+### Sombras
+
+### Botones
+
+### Cards
+
+### Inputs
+
+### Badges
+
+### Iconos
+
+Todos los componentes deben utilizar estos mismos tokens.
+
+Por ejemplo:
+
+```text
+Primary
+Secondary
+Accent
+Background
+Surface
+Text Primary
+Text Secondary
+Border
+Success
+Warning
+Error
+```
+
+No utilizar colores arbitrarios directamente dentro de los componentes.
+
+---
+
+# 3. MEJORAR LA PALETA DE COLORES
+
+La paleta actual es:
+
+```text
+#012B4E
+#2BC4B5
+#FEE35A
+#FEBE69
+#FC9A36
+#FD544A
+#FFF5EC
+```
+
+No es necesario utilizar todos estos colores con la misma intensidad.
+
+Quiero una composición mucho más sofisticada.
+
+### Regla:
+
+El azul oscuro debe ser el color estructural principal.
+
+El crema debe ser el background principal.
+
+El turquesa debe utilizarse como color de acción/acentos.
+
+El amarillo y naranja deben utilizarse únicamente como acentos.
+
+El rojo coral debe reservarse para situaciones de urgencia o estados específicos.
+
+**No quiero que cada sección tenga un color diferente.**
+
+La página debe sentirse como una única identidad visual.
+
+Utiliza aproximadamente:
+
+* 60–70% tonos neutros/crema.
+* 20–30% azul oscuro.
+* 5–10% colores de acento.
+
+Los colores vivos deben utilizarse estratégicamente.
+
+---
+
+# 4. CREAR UNA JERARQUÍA VISUAL CLARA
+
+La web debe tener una jerarquía visual evidente.
+
+El usuario debe identificar rápidamente:
+
+1. Qué es el albergue.
+2. Qué puede hacer.
+3. Qué animales necesitan ayuda.
+4. Cómo adoptar.
+5. Cómo donar.
+6. Cómo participar.
+
+Los títulos principales deben destacar mucho más que los textos secundarios.
+
+No utilizar demasiados elementos compitiendo visualmente.
+
+---
+
+# 5. SISTEMA TIPOGRÁFICO
+
+Crear una jerarquía tipográfica consistente.
+
+Por ejemplo:
+
+```text
+Display / Hero
+H1
+H2
+H3
+Body Large
+Body
+Small
+Caption
+```
+
+Definir tamaños, pesos y line-height consistentes.
+
+No utilizar un tamaño diferente de título para cada sección sin una razón.
+
+Los títulos deben tener personalidad pero mantener una estética profesional.
+
+---
+
+# 6. SISTEMA DE ESPACIADO
+
+Crear una escala consistente.
+
+Por ejemplo:
+
+```text
+4px
+8px
+12px
+16px
+24px
+32px
+48px
+64px
+80px
+96px
+```
+
+Utilizar esta escala para:
+
+* Margins.
+* Padding.
+* Gap.
+* Espaciado entre secciones.
+* Espaciado entre títulos y contenido.
+
+Evitar valores arbitrarios como:
+
+```text
+17px
+23px
+37px
+51px
+```
+
+salvo que exista una razón concreta.
+
+---
+
+# 7. CARDS
+
+Este es uno de los problemas que quiero corregir especialmente.
+
+Todas las cards que pertenezcan al mismo grupo deben tener una estructura consistente.
+
+Por ejemplo, las cards de animales:
+
+```text
+┌─────────────────────┐
+│                     │
+│       IMAGEN        │
+│                     │
+├─────────────────────┤
+│ Nombre              │
+│ Edad · Sexo         │
+│                     │
+│ Descripción         │
+│                     │
+│ Estado              │
+│                     │
+│ [Ver historia]      │
+└─────────────────────┘
+```
+
+Las cards deben mantener:
+
+* Misma altura.
+* Misma anchura cuando estén en el mismo grid.
+* Misma proporción de imagen.
+* Mismo padding.
+* Misma posición del botón.
+* Misma jerarquía tipográfica.
+
+Si una descripción tiene menos texto que otra, la card **no debe hacerse más pequeña**.
+
+Utilizar:
+
+* Flexbox.
+* `h-full`.
+* `flex-col`.
+* `mt-auto`.
+
+cuando sea necesario para mantener los botones alineados.
+
+---
+
+# 8. IMÁGENES DE LAS CARDS
+
+Las imágenes deben tener una proporción uniforme.
+
+No permitir que una imagen haga crecer una card más que otra.
+
+Utilizar una proporción consistente, por ejemplo:
+
+```text
+aspect-ratio: 4 / 3
+```
+
+o
+
+```text
+aspect-ratio: 1 / 1
+```
+
+dependiendo del componente.
+
+Utilizar:
+
+```text
+object-fit: cover
+```
+
+para mantener consistencia visual.
+
+---
+
+# 9. BOTONES
+
+Crear un sistema global de botones.
+
+Como mínimo:
+
+### Primary
+
+Para acciones principales:
+
+**DONAR AHORA**
+
+### Secondary
+
+Para acciones secundarias:
+
+**CONOCER MÁS**
+
+### Ghost
+
+Para acciones menos importantes.
+
+### Danger / Urgent
+
+Solo cuando realmente sea necesario.
+
+Todos los botones deben compartir:
+
+* Altura.
+* Border radius.
+* Font weight.
+* Padding.
+* Transition.
+* Focus state.
+
+Por ejemplo:
+
+```text
+height: 44–48px
+padding: 0 20–24px
+border-radius: 12px
+font-weight: 600
+```
+
+No crear un estilo de botón diferente para cada sección.
+
+---
+
+# 10. BOTÓN DE DONAR
+
+El botón **DONAR** debe tener una identidad propia y ser fácilmente reconocible.
+
+Debe aparecer consistentemente en:
+
+* Header.
+* Hero.
+* Sección de donaciones.
+* Footer.
+
+Pero no debe sentirse invasivo.
+
+El CTA principal debe destacar mediante contraste, no simplemente mediante colores excesivamente brillantes.
+
+---
+
+# 11. GRID Y ALINEACIÓN
+
+Toda la página debe utilizar un sistema de layout consistente.
+
+Crear un container global.
+
+Por ejemplo:
+
+```text
+max-width: 1200px
+margin: auto
+padding: 24px
+```
+
+En desktop:
+
+```text
+12-column grid
+```
+
+En tablet:
+
+```text
+6-column grid
+```
+
+En móvil:
+
+```text
+1-column layout
+```
+
+Los elementos deben compartir los mismos márgenes laterales.
+
+Quiero que al hacer scroll la página tenga una sensación clara de alineación.
+
+---
+
+# 12. SECCIONES
+
+Cada sección debe tener una estructura visual coherente:
+
+```text
+Section
+ ├── Eyebrow / Badge opcional
+ ├── Heading
+ ├── Description
+ └── Content
+```
+
+No crear secciones donde el título esté demasiado cerca o demasiado lejos del contenido.
+
+Utilizar espacios verticales generosos.
+
+---
+
+# 13. HERO
+
+El Hero debe ser uno de los elementos más modernos de la página.
+
+Evitar un Hero genérico con:
+
+```text
+texto izquierda + imagen derecha
+```
+
+si existe una composición más interesante.
+
+Puedes utilizar:
+
+* Imagen grande.
+* Overlay suave.
+* Cards flotantes.
+* Estadísticas.
+* Badge.
+* Elementos orgánicos.
+* Shapes suaves.
+
+Pero mantenerlo elegante.
+
+El Hero debe transmitir:
+
+**"Esta organización importa y puedo ayudar."**
+
+---
+
+# 14. ESTILO VISUAL MODERNO / VANGUARDISTA
+
+Quiero que explores una estética contemporánea.
+
+Inspiración conceptual:
+
+* Editorial design.
+* Modern nonprofit websites.
+* Premium startup websites.
+* Minimalismo cálido.
+* Fotografía documental.
+* Organic shapes.
+* Bento layouts.
+* Large typography.
+* Generous whitespace.
+
+NO quiero:
+
+* Diseño infantil.
+* Exceso de emojis.
+* Exceso de colores.
+* Gradientes genéricos.
+* Sombras exageradas.
+* Glassmorphism excesivo.
+* Animaciones constantes.
+* Cards flotando sin propósito.
+
+La web debe sentirse **humana y moderna**, no como una plantilla SaaS.
+
+---
+
+# 15. BENTO / COMPOSICIONES ASIMÉTRICAS
+
+Puedes utilizar layouts tipo Bento cuando aporten valor.
+
+Por ejemplo, en la sección de impacto:
+
+```text
+┌──────────────┬──────────────┐
+│              │              │
+│  RESCATADOS  │   ADOPTADOS  │
+│              │              │
+├──────────────┴───────┬──────┤
+│                      │      │
+│  HISTORIA DESTACADA  │ FOTO │
+│                      │      │
+└──────────────────────┴──────┘
+```
+
+La asimetría debe ser intencional.
+
+No sacrificar legibilidad ni consistencia.
+
+---
+
+# 16. CAMPAÑA DE ADOPCIÓN
+
+La campaña presencial de todos los viernes debe tener una identidad visual propia.
+
+Debe sentirse como un **evento recurrente**, no como una simple sección informativa.
+
+Mostrar:
+
+### "Todos los viernes, una nueva oportunidad"
+
+Incluir:
+
+* Badge "TODOS LOS VIERNES".
+* Fecha/día.
+* Lugar.
+* Horario.
+* Animales disponibles.
+* Productos solidarios.
+* CTA.
+
+Crear una composición visual atractiva que combine:
+
+**Adopción + Comunidad + Productos solidarios**
+
+---
+
+# 17. SECCIÓN DE DONACIONES
+
+Debe diferenciarse visualmente de la campaña de adopción.
+
+No mezclar ambas cosas.
+
+La sección de donaciones debe tener una jerarquía muy clara:
+
+```text
+¿Por qué donar?
+      ↓
+¿Con cuánto puedo ayudar?
+      ↓
+¿Cómo puedo donar?
+      ↓
+BCP / Yape / PayPal
+```
+
+Los métodos de pago deben utilizar cards consistentes.
+
+---
+
+# 18. TRANSPARENCIA
+
+La sección de transparencia debe sentirse más cercana a un **dashboard editorial moderno** que a una tabla financiera tradicional.
+
+Utilizar:
+
+* Progress bars.
+* Grandes números.
+* Cards.
+* Gráficos simples.
+* Timeline.
+* Indicadores.
+
+Pero evitar sobrecargarla con gráficos innecesarios.
+
+La transparencia debe transmitir:
+
+**"Puedes ver exactamente qué estamos intentando conseguir."**
+
+---
+
+# 19. ANIMACIONES
+
+Agregar microinteracciones sutiles:
+
+* Hover en cards.
+* Hover en botones.
+* Aparición suave de elementos.
+* Transiciones.
+* Scale muy ligero en imágenes.
+* Scroll reveal cuando tenga sentido.
+
+No utilizar animaciones excesivas.
+
+La animación debe mejorar la experiencia, no distraer.
+
+---
+
+# 20. RESPONSIVE
+
+Revisar toda la aplicación en:
+
+* 320px.
+* 375px.
+* 768px.
+* 1024px.
+* 1440px.
+
+Corregir:
+
+* Overflow horizontal.
+* Cards demasiado pequeñas.
+* Botones que se salen del viewport.
+* Texto demasiado grande.
+* Imágenes deformadas.
+* Grids incorrectos.
+* Espaciados excesivos.
+
+En móvil, priorizar:
+
+1. Donar.
+2. Adopción.
+3. Historias.
+4. Información esencial.
+
+---
+
+# 21. CONSISTENCIA ENTRE COMPONENTES
+
+Si existen componentes similares, refactorizarlos para que utilicen el mismo componente base.
+
+Por ejemplo:
+
+```text
+AnimalCard
+ProductCard
+PartnerCard
+TransparencyCard
+```
+
+deben compartir patrones de:
+
+* Padding.
+* Border radius.
+* Shadow.
+* Typography.
+* Hover.
+* Image ratio.
+
+No crear estilos completamente diferentes para cada card.
+
+---
+
+# 22. IMPORTANTE: NO CAMBIAR EL CONTENIDO
+
+Conserva:
+
+* Información.
+* Textos.
+* Secciones.
+* Páginas.
+* Funcionalidades.
+* Datos mock.
+
+Puedes modificar:
+
+* Colores.
+* Tamaños.
+* Espaciado.
+* Layout.
+* Tipografía.
+* Cards.
+* Botones.
+* Animaciones.
+* Composición.
+* Jerarquía visual.
+
+El objetivo es **mejorar radicalmente la presentación sin alterar el propósito de la web**.
+
+---
+
+# 23. RESULTADO QUE QUIERO
+
+Quiero que después de esta intervención la página tenga:
+
+**Consistencia → Elegancia → Personalidad → Claridad → Emoción**
+
+Debe sentirse como una web diseñada por un **equipo profesional de UI/UX**, no como diferentes componentes generados independientemente.
+
+Antes de terminar:
+
+1. Revisa todos los componentes.
+2. Elimina estilos duplicados.
+3. Unifica botones.
+4. Unifica cards.
+5. Unifica tipografías.
+6. Unifica espaciados.
+7. Unifica colores.
+8. Revisa responsive.
+9. Revisa accesibilidad.
+10. Comprueba que todas las páginas mantienen la misma identidad visual.
+
+No te limites a corregir pequeños detalles. **Si una sección necesita ser reorganizada visualmente para conseguir un resultado mucho más moderno, hazlo.**
+
+La prioridad es conseguir una experiencia visual **coherente, contemporánea, premium y memorable**, manteniendo el carácter humano del albergue.

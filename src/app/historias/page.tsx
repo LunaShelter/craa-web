@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { animalsService } from '@/services/animalsService';
 import AnimalCard from '@/components/animals/AnimalCard';
-import { ctaButtonClasses } from '@/lib/designTokens';
 
 export const metadata: Metadata = {
   title: 'Historias de rescatados',
@@ -18,37 +17,39 @@ export default function HistoriasPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-[#012B4E] text-white py-20">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-[#2BC4B5]/20 border border-[#2BC4B5]/40 text-[#2BC4B5] px-4 py-2 rounded-full text-sm font-medium mb-6">
-            🐾 Historias de rescatados
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Ellos cambiaron su historia</h1>
-          <p className="text-white/80 text-xl max-w-2xl mx-auto">
+      <section className="bg-[#012B4E] text-white py-24">
+        <div className="max-w-[1200px] mx-auto px-6 text-center">
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
+            Ellos cambiaron su historia
+          </h1>
+          <p className="text-white/60 text-lg max-w-2xl mx-auto leading-relaxed">
             Cada uno llegó herido, asustado o solo. Hoy son la prueba de que el amor puede transformar cualquier vida.
           </p>
         </div>
       </section>
 
       {/* Stats bar */}
-      <section className="bg-white py-8 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center gap-8 text-center">
+      <section className="bg-white py-8 border-b border-[#F0E6D8]">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="flex flex-wrap justify-center gap-10 text-center">
             <div>
-              <p className="text-2xl font-bold text-[#FD544A]">{available.length}</p>
-              <p className="text-sm text-gray-500">Buscando hogar</p>
+              <p className="text-3xl font-extrabold text-[#FD544A] leading-none">{available.length}</p>
+              <p className="text-xs text-[#7A93A8] uppercase tracking-widest font-medium mt-1">Buscando hogar</p>
             </div>
+            <div className="w-px bg-[#F0E6D8]" aria-hidden="true" />
             <div>
-              <p className="text-2xl font-bold text-[#FC9A36]">{recovering.length}</p>
-              <p className="text-sm text-gray-500">En recuperación</p>
+              <p className="text-3xl font-extrabold text-[#FC9A36] leading-none">{recovering.length}</p>
+              <p className="text-xs text-[#7A93A8] uppercase tracking-widest font-medium mt-1">En recuperación</p>
             </div>
+            <div className="w-px bg-[#F0E6D8]" aria-hidden="true" />
             <div>
-              <p className="text-2xl font-bold text-green-600">{adopted.length}</p>
-              <p className="text-sm text-gray-500">Adoptados</p>
+              <p className="text-3xl font-extrabold text-emerald-600 leading-none">{adopted.length}</p>
+              <p className="text-xs text-[#7A93A8] uppercase tracking-widest font-medium mt-1">Adoptados</p>
             </div>
+            <div className="w-px bg-[#F0E6D8]" aria-hidden="true" />
             <div>
-              <p className="text-2xl font-bold text-[#012B4E]">{all.length}</p>
-              <p className="text-sm text-gray-500">Total en la web</p>
+              <p className="text-3xl font-extrabold text-[#012B4E] leading-none">{all.length}</p>
+              <p className="text-xs text-[#7A93A8] uppercase tracking-widest font-medium mt-1">Total</p>
             </div>
           </div>
         </div>
@@ -56,13 +57,13 @@ export default function HistoriasPage() {
 
       {/* Buscando hogar */}
       {available.length > 0 && (
-        <section className="py-16 bg-[#FFF5EC]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-[#012B4E] mb-8 flex items-center gap-2">
-              🏠 Buscando hogar
-              <span className="bg-[#FD544A]/10 text-[#FD544A] text-sm px-3 py-1 rounded-full font-medium">{available.length}</span>
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <section className="py-20 bg-[#FFF5EC]">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="flex items-center gap-3 mb-10">
+              <h2 className="text-2xl font-extrabold text-[#012B4E]">Buscando hogar</h2>
+              <span className="bg-[#FFF0EF] text-[#c0392b] border border-[#f5c6c3] text-xs font-bold px-3 py-1 rounded-lg">{available.length}</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
               {available.map((animal) => <AnimalCard key={animal.id} animal={animal} />)}
             </div>
           </div>
@@ -71,13 +72,13 @@ export default function HistoriasPage() {
 
       {/* En recuperación */}
       {recovering.length > 0 && (
-        <section className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-[#012B4E] mb-8 flex items-center gap-2">
-              🏥 En recuperación
-              <span className="bg-yellow-100 text-yellow-700 text-sm px-3 py-1 rounded-full font-medium">{recovering.length}</span>
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <section className="py-20 bg-white">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="flex items-center gap-3 mb-10">
+              <h2 className="text-2xl font-extrabold text-[#012B4E]">En recuperación</h2>
+              <span className="bg-amber-50 text-amber-700 border border-amber-200 text-xs font-bold px-3 py-1 rounded-lg">{recovering.length}</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
               {recovering.map((animal) => <AnimalCard key={animal.id} animal={animal} />)}
             </div>
           </div>
@@ -86,13 +87,13 @@ export default function HistoriasPage() {
 
       {/* Adoptados */}
       {adopted.length > 0 && (
-        <section className="py-16 bg-[#FFF5EC]">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-[#012B4E] mb-8 flex items-center gap-2">
-              ✅ Adoptados
-              <span className="bg-green-100 text-green-700 text-sm px-3 py-1 rounded-full font-medium">{adopted.length}</span>
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <section className="py-20 bg-[#FFF5EC]">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <div className="flex items-center gap-3 mb-10">
+              <h2 className="text-2xl font-extrabold text-[#012B4E]">Adoptados</h2>
+              <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold px-3 py-1 rounded-lg">{adopted.length}</span>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-stretch">
               {adopted.map((animal) => <AnimalCard key={animal.id} animal={animal} />)}
             </div>
           </div>
@@ -100,12 +101,12 @@ export default function HistoriasPage() {
       )}
 
       {/* CTA */}
-      <section className="py-16 bg-[#012B4E] text-center">
-        <div className="max-w-2xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-4">¿Quieres conocerlos en persona?</h2>
-          <p className="text-white/80 mb-8">Todos los viernes organizamos nuestra campaña de adopción en el centro de Ayacucho.</p>
-          <Link href="/donar" className={`inline-flex items-center justify-center gap-2 ${ctaButtonClasses} font-bold px-8 py-4 rounded-xl transition-all active:scale-95`}>
-            DONAR Y APOYARLOS ❤️
+      <section className="py-20 bg-[#012B4E] text-center">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <h2 className="text-4xl font-extrabold text-white mb-4 tracking-tight">Ven en persona los viernes</h2>
+          <p className="text-white/55 mb-10 text-lg">Todos los viernes organizamos nuestra campaña de adopción en el centro de Ayacucho.</p>
+          <Link href="/donar" className="inline-flex items-center justify-center gap-2 bg-[#2BC4B5] hover:bg-[#22a99c] text-white font-bold px-8 py-3.5 rounded-xl transition-all active:scale-95 text-sm shadow-lg">
+            DONAR Y APOYARLOS
           </Link>
         </div>
       </section>

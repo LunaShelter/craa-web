@@ -47,18 +47,17 @@ export const teamMembers: TeamMember[] = [
 
 export const shelterHistory = {
   founded: 2018,
-  founder: 'María Quispe Huamán',
-  mission: 'Rescatar, rehabilitar y reubicar a animales en situación de abandono o maltrato en la región de Ayacucho, promoviendo una cultura de respeto y amor hacia los animales.',
-  vision: 'Ser el referente de bienestar animal en la región, construyendo una comunidad consciente donde ningún animal sufra por abandono o maltrato.',
+  founder: 'Wendy',
+  mission: 'Nos dedicamos al cuidado y rescate de animales en situaciones extremas, así mismo, a la educación y concientización de la comunidad ayacuchana sobre la tenencia responsable de mascotas, incluyendo procesos de rehabilitación y reubicación',
+  vision: 'Lograr la calidad de vida de los animales domésticos en la región Ayacucho.',
   values: [
     { title: 'Amor', description: 'Cada animal merece ser amado y cuidado.' },
     { title: 'Transparencia', description: 'Tu confianza es nuestra responsabilidad.' },
     { title: 'Compromiso', description: 'No abandonamos a quienes nos necesitan.' },
     { title: 'Comunidad', description: 'Juntos podemos cambiar más vidas.' },
   ],
-  story: `Todo comenzó en 2018, cuando María Quispe encontró a "Negrita", una perra abandonada y herida en el Jr. Arequipa. Sin pensarlo dos veces, la recogió, la llevó al veterinario y comenzó a buscarle una familia. Esa experiencia le mostró que el problema era enorme: cientos de animales en las calles de Ayacucho sin nadie que los ayudara.
+  story: `En la histórica ciudad de Huamanga, lamentablemente es común encontrar animales en las calles, mercados y pasajes, luchando cada día por sobrevivir frente al hambre, las enfermedades, el abandono y, muchas veces, el maltrato. Detrás de cada uno de ellos hay una historia importante, una vida que merece ser escuchada y, sobre todo, una oportunidad para comenzar de nuevo.
 
-Con voluntad, amor y muy pocos recursos, María comenzó a rescatar animales de manera informal. Pronto se le unieron amigos, vecinos y voluntarios que compartían su visión. En 2019, CRAA se formalizó como asociación civil y comenzó a operar con un pequeño albergue en la periferia de la ciudad.
-
-Hoy, años después, CRAA cuenta con un equipo de dedicados voluntarios, un médico veterinario permanente, y ha rescatado a más de 1,200 animales. Pero sobre todo, cuenta con una comunidad de personas que creen que cada vida importa.`,
+Conciencia y Rescate Animal Ayacucho es un grupo de voluntarios que decidió no mirar hacia otro lado. Nosotros rescatamos con nuestros propios medios animales que se encuentran en situaciones de vulnerabilidad, les brindamos alimento, atención y los cuidados necesarios, trabajando constantemente para encontrarles un hogar donde puedan sentirse seguros, queridos y protegidos.
+`,
 };
