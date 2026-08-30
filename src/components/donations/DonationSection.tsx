@@ -192,7 +192,7 @@ function YapeCard({ method }: { method: DonationMethod }) {
       badge="Yape"
       badgeColor="#7B2FBE"
       title="Yape"
-      subtitle={method.description}
+      subtitle={method.description ?? 'Rápido y fácil desde tu celular'}
       action={
         <CardAction onClick={copyPhone} tone="#7B2FBE">
           {copied ? '✓ Copiado' : 'Copiar número Yape'}
