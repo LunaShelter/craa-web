@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { animalsService } from '@/services/animalsService';
 import { volunteersService } from '@/services/volunteersService';
 import AnimalCard from '@/components/animals/AnimalCard';
+import AdoptionForm from '@/components/animals/AdoptionForm';
 import FridayCampaignSection from '@/components/home/FridayCampaignSection';
 import PageHero from '@/components/ui/PageHero';
 
@@ -27,7 +28,13 @@ const requirements = [
   'Firmar acta de adopción responsable',
 ];
 
-export default function AdopcionPage() {
+export default async function AdopcionPage({
+  searchParams,
+}: {
+  /** /adopcion?animal=luna — la ficha del animal abre el formulario con él ya elegido. */
+  searchParams: Promise<{ animal?: string }>;
+}) {
+  const { animal: selectedId } = await searchParams;
   const available = animalsService.getAvailableForAdoption();
   const campaign = volunteersService.getFridayCampaign();
 
@@ -171,6 +178,44 @@ export default function AdopcionPage() {
               <div className="mt-7 pt-6 border-t border-white/10 text-[13px] text-white/50 leading-[1.7]">
                 También puedes venir el viernes al Atrio San Agustín y conversar con nuestros coordinadores en persona.
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* Formulario de adopción */}
+      <section id="formulario" className="pb-24 lg:pb-26 scroll-mt-24" aria-label="Formulario de adopción">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="bg-[#F7EAD8] border border-[#E8D9C8] rounded-[40px] p-8 sm:p-12 lg:p-14 grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
+            <div>
+              <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#1a8f84] mb-4">Formulario</div>
+              <h2 className="font-heading text-[32px] lg:text-[42px] text-[#012B4E] leading-[1.1] mb-[18px]">
+                Empieza tu solicitud de adopción
+              </h2>
+              <p className="text-[#4A6580] text-base leading-[1.75] mb-7">
+                Nos ayuda a conocerte y a encontrar el animal que mejor encaje con tu hogar. Nuestra coordinadora te escribe en menos de 48 horas.
+              </p>
+              <div className="flex flex-col gap-2.5">
+                {[
+                  'Completas este formulario.',
+                  'Conversamos y coordinamos el encuentro.',
+                  'Firmamos el acta y se va a casa.',
+                ].map((text, i) => (
+                  <div key={text} className="bg-white rounded-[20px] px-[22px] py-4 flex items-center gap-3.5">
+                    <span
+                      className={
+                        'w-[26px] h-[26px] rounded-full text-xs font-extrabold flex items-center justify-center flex-shrink-0 text-white ' +
+                        (i === 0 ? 'bg-[#2BC4B5]' : 'bg-[#012B4E]')
+                      }
+                    >
+                      {i + 1}
+                    </span>
+                    <span className="text-[#4A6580] text-sm">{text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-white rounded-[32px] p-8 lg:p-[38px]">
+              <AdoptionForm animals={available} selectedId={selectedId} />
             </div>
           </div>
         </div>

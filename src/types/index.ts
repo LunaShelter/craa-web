@@ -29,7 +29,7 @@ export interface DonationMethod {
   id: string;
   type: 'bcp' | 'yape' | 'paypal';
   name: string;
-  description?: string;
+  description: string;
   data: BcpData | YapeData | PaypalData;
 }
 

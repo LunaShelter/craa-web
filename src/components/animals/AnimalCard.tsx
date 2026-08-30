@@ -51,16 +51,16 @@ export default function AnimalCard({ animal }: AnimalCardProps) {
         {/* One primary pill + a quiet text link, always at the bottom */}
         <div className="flex items-center gap-3.5 mt-auto">
           <Link
-            href={`/historias/${animal.id}`}
+            href={animal.status === 'buscando-hogar' ? `/adopcion?animal=${animal.id}#formulario` : `/historias/${animal.id}`}
             className="flex-1 text-center text-sm font-bold bg-[#2BC4B5] hover:bg-[#22a99c] text-white py-3 rounded-full transition-all duration-200 active:scale-95 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2BC4B5]"
           >
-            Conocer
+            {animal.status === 'buscando-hogar' ? 'Adoptar' : 'Conocer'}
           </Link>
           <Link
-            href="/donar"
+            href={`/historias/${animal.id}`}
             className="text-sm font-semibold text-[#012B4E] underline underline-offset-[3px] hover:text-[#2BC4B5] transition-colors"
           >
-            Ayudar
+            Su historia
           </Link>
         </div>
       </div>
