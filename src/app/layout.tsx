@@ -1,12 +1,20 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Caprasimo, Figtree } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
-const inter = Inter({
+const figtree = Figtree({
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-body',
+});
+
+const caprasimo = Caprasimo({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+  variable: '--font-heading',
 });
 
 export const metadata: Metadata = {
@@ -44,7 +52,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={inter.className}>
+    <html lang="es" className={`${figtree.variable} ${caprasimo.variable}`}>
       <body className="min-h-screen flex flex-col bg-[#FFF5EC]">
         <Header />
         <main className="flex-1">{children}</main>

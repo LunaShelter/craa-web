@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const navLinks = [
   { href: '/', label: 'Inicio' },
@@ -16,35 +16,24 @@ const navLinks = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 12);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
-    <header
-      className={`sticky top-0 z-40 bg-white/96 backdrop-blur-md border-b transition-all duration-300 ${
-        scrolled ? 'border-[#E8D9C8] shadow-[0_2px_12px_0_rgba(1,43,78,0.08)]' : 'border-transparent shadow-none'
-      }`}
-    >
+    <header className="sticky top-0 z-40 bg-[#FFF5EC]/92 backdrop-blur-[14px]">
       <div className="max-w-[1200px] mx-auto px-6">
-        <div className="flex items-center justify-between h-16 md:h-18">
+        <div className="flex items-center justify-between h-[72px] md:h-[84px]">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 flex-shrink-0 group">
             <Image
               src="/logo_craa.png"
               alt="CRAA - Conciencia y Rescate Animal Ayacucho"
-              width={40}
-              height={40}
+              width={44}
+              height={44}
               className="object-contain group-hover:scale-105 transition-transform duration-200"
             />
-            <div className="hidden sm:block leading-none">
-              <span className="font-bold text-[#012B4E] text-base block tracking-tight">CRAA</span>
-              <span className="text-[11px] text-[#7A93A8] block mt-0.5">Conciencia y Rescate Animal</span>
-            </div>
+            <span className="hidden sm:block leading-none">
+              <span className="block font-heading text-[#012B4E] text-xl tracking-[0.01em]">CRAA</span>
+              <span className="block text-[11px] text-[#7A93A8] mt-[3px] tracking-[0.02em]">Conciencia y Rescate Animal</span>
+            </span>
           </Link>
 
           {/* Desktop nav */}
@@ -53,7 +42,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-3.5 py-2 text-sm font-medium text-[#4A6580] rounded-lg hover:text-[#012B4E] hover:bg-[#F7EAD8] transition-colors duration-150"
+                className="px-[15px] py-[9px] text-sm font-medium text-[#4A6580] rounded-full hover:bg-[#F7EAD8] hover:text-[#012B4E] transition-colors duration-150"
               >
                 {link.label}
               </Link>
@@ -64,23 +53,24 @@ export default function Header() {
           <div className="flex items-center gap-3">
             <Link
               href="/donar"
-              className="inline-flex items-center gap-1.5 bg-[#2BC4B5] hover:bg-[#22a99c] text-white font-semibold px-5 py-2.5 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 text-sm focus:outline-none focus:ring-2 focus:ring-[#2BC4B5] focus:ring-offset-2"
+              className="inline-flex items-center gap-2 bg-[#012B4E] hover:bg-[#024070] text-white font-bold px-[26px] py-[13px] rounded-full text-sm tracking-[0.02em] transition-all duration-200 active:scale-95 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2BC4B5]"
             >
               DONAR
+              <span className="w-[7px] h-[7px] rounded-full bg-[#2BC4B5] inline-block" aria-hidden="true" />
             </Link>
 
             {/* Hamburger */}
             <button
-              className="lg:hidden p-2 rounded-lg text-[#4A6580] hover:bg-[#F7EAD8] hover:text-[#012B4E] transition-colors"
+              className="lg:hidden p-2 rounded-full text-[#4A6580] hover:bg-[#F7EAD8] hover:text-[#012B4E] transition-colors"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-expanded={menuOpen}
               aria-label="Abrir menú de navegación"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={2.75} viewBox="0 0 24 24">
                 {menuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                 ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 )}
               </svg>
             </button>
@@ -90,13 +80,13 @@ export default function Header() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="lg:hidden bg-white border-t border-[#F0E6D8]">
+        <div className="lg:hidden bg-[#FFF5EC] border-t border-[#E8D9C8]">
           <nav className="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-1" aria-label="Menú móvil">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="px-4 py-3 text-sm font-medium text-[#4A6580] rounded-xl hover:text-[#012B4E] hover:bg-[#F7EAD8] transition-colors"
+                className="px-5 py-3 text-sm font-medium text-[#4A6580] rounded-full hover:text-[#012B4E] hover:bg-[#F7EAD8] transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
@@ -104,7 +94,7 @@ export default function Header() {
             ))}
             <Link
               href="/donar"
-              className="mt-3 inline-flex items-center justify-center gap-2 bg-[#2BC4B5] hover:bg-[#22a99c] text-white font-semibold px-5 py-3 rounded-xl transition-all duration-200 active:scale-95"
+              className="mt-3 inline-flex items-center justify-center gap-2 bg-[#012B4E] hover:bg-[#024070] text-white font-bold px-6 py-3.5 rounded-full transition-all duration-200 active:scale-95"
               onClick={() => setMenuOpen(false)}
             >
               DONAR AHORA

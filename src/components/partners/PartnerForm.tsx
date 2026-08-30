@@ -32,17 +32,19 @@ export default function PartnerForm() {
     setSubmitted(true);
   };
 
-  const inputCls = "w-full bg-white border border-[#E8D9C8] rounded-xl px-4 py-3 text-[#012B4E] placeholder-[#B0C0CC] text-sm focus:outline-none focus:ring-2 focus:ring-[#2BC4B5] focus:border-transparent transition-all";
-  const labelCls = "block text-xs font-bold text-[#7A93A8] uppercase tracking-widest mb-1.5";
+  // Controles pill sobre crema, foco temático turquesa.
+  const inputCls =
+    'w-full bg-[#FFF5EC] border border-[#E8D9C8] rounded-full px-5 py-3.5 text-[#012B4E] placeholder-[#B0C0CC] text-sm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2BC4B5] transition-all';
+  const labelCls = 'block text-[11px] font-bold text-[#7A93A8] uppercase tracking-[0.12em] mb-2';
 
   if (submitted) {
     return (
       <div className="text-center py-12">
-        <div className="w-16 h-16 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-center mx-auto mb-5">
+        <div className="w-16 h-16 bg-[#E8FAF9] border border-[#b5e8e4] rounded-full flex items-center justify-center mx-auto mb-5">
           <span className="text-3xl" aria-hidden="true">🎉</span>
         </div>
-        <h3 className="text-xl font-bold text-[#012B4E] mb-2">¡Gracias por tu interés!</h3>
-        <p className="text-[#4A6580] text-sm max-w-md mx-auto leading-relaxed">
+        <h3 className="font-heading text-[26px] text-[#012B4E] mb-2">¡Gracias por tu interés!</h3>
+        <p className="text-[#4A6580] text-sm max-w-md mx-auto leading-[1.7]">
           Hemos recibido tu información. Nuestro equipo se pondrá en contacto contigo en los próximos 2-3 días hábiles.
         </p>
       </div>
@@ -50,23 +52,23 @@ export default function PartnerForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+    <form onSubmit={handleSubmit} className="space-y-4" noValidate>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="companyName" className={labelCls}>Nombre de la empresa *</label>
-          <input id="companyName" name="companyName" type="text" required value={form.companyName} onChange={handleChange} className={inputCls} placeholder="Tu empresa" />
+          <label htmlFor="companyName" className={labelCls}>Organización *</label>
+          <input id="companyName" name="companyName" type="text" required value={form.companyName} onChange={handleChange} className={inputCls} placeholder="Nombre de la empresa" />
         </div>
         <div>
-          <label htmlFor="contactName" className={labelCls}>Nombre del contacto *</label>
+          <label htmlFor="contactName" className={labelCls}>Nombre de contacto *</label>
           <input id="contactName" name="contactName" type="text" required value={form.contactName} onChange={handleChange} className={inputCls} placeholder="Tu nombre" />
         </div>
         <div>
-          <label htmlFor="email" className={labelCls}>Correo electrónico *</label>
-          <input id="email" name="email" type="email" required value={form.email} onChange={handleChange} className={inputCls} placeholder="correo@empresa.com" />
+          <label htmlFor="email" className={labelCls}>Correo *</label>
+          <input id="email" name="email" type="email" required value={form.email} onChange={handleChange} className={inputCls} placeholder="correo@empresa.pe" />
         </div>
         <div>
           <label htmlFor="phone" className={labelCls}>Teléfono</label>
-          <input id="phone" name="phone" type="tel" value={form.phone} onChange={handleChange} className={inputCls} placeholder="+51 000 000 000" />
+          <input id="phone" name="phone" type="tel" value={form.phone} onChange={handleChange} className={inputCls} placeholder="+51 999 999 999" />
         </div>
       </div>
 
@@ -85,14 +87,22 @@ export default function PartnerForm() {
 
       <div>
         <label htmlFor="message" className={labelCls}>Cuéntanos más</label>
-        <textarea id="message" name="message" rows={4} value={form.message} onChange={handleChange} className={`${inputCls} resize-none`} placeholder="Describe cómo te gustaría colaborar con CRAA..." />
+        <textarea
+          id="message"
+          name="message"
+          rows={4}
+          value={form.message}
+          onChange={handleChange}
+          className="w-full bg-[#FFF5EC] border border-[#E8D9C8] rounded-3xl px-5 py-4 text-[#012B4E] placeholder-[#B0C0CC] text-sm resize-none focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2BC4B5] transition-all"
+          placeholder="Cuéntanos cómo te gustaría colaborar con CRAA"
+        />
       </div>
 
       <button
         type="submit"
-        className="w-full bg-[#012B4E] hover:bg-[#024070] text-white font-bold py-3.5 rounded-xl transition-all active:scale-95 text-sm"
+        className="w-full bg-[#2BC4B5] hover:bg-[#22a99c] text-white font-bold py-[17px] rounded-full text-[15px] tracking-[0.02em] transition-all active:scale-95 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2BC4B5]"
       >
-        ENVIAR PROPUESTA
+        ENVIAR SOLICITUD
       </button>
     </form>
   );

@@ -43,28 +43,28 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#012B4E] text-white" role="contentinfo">
-      <div className="max-w-[1200px] mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <footer className="bg-[#012B4E] text-white rounded-t-[56px]" role="contentinfo">
+      <div className="max-w-[1200px] mx-auto px-6 pt-[72px] pb-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr_1.1fr] gap-10 lg:gap-14">
           {/* Brand */}
-          <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center gap-3 mb-5 group">
+          <div>
+            <Link href="/" className="flex items-center gap-3 mb-[22px] group">
               <Image
                 src="/logo_craa.png"
                 alt="CRAA"
-                width={40}
-                height={40}
+                width={44}
+                height={44}
                 className="object-contain brightness-0 invert group-hover:scale-105 transition-transform duration-200"
               />
-              <div>
-                <span className="font-bold text-lg block text-white leading-tight">CRAA</span>
-                <span className="text-[11px] text-white/45 block mt-0.5">Conciencia y Rescate Animal</span>
-              </div>
+              <span className="block">
+                <span className="font-heading text-[22px] block text-white leading-tight">CRAA</span>
+                <span className="text-[11px] text-white/45 block mt-[3px]">Conciencia y Rescate Animal</span>
+              </span>
             </Link>
-            <p className="text-white/55 text-sm leading-relaxed mb-6">
+            <p className="text-white/55 text-sm leading-[1.7] mb-[26px] max-w-[280px]">
               Rescatamos, rehabilitamos y reubicamos animales en situación de abandono en Ayacucho, Perú.
             </p>
-            <div className="flex gap-2">
+            <div className="flex gap-2.5">
               {socialLinks.map((s) => (
                 <a
                   key={s.label}
@@ -72,7 +72,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={s.label}
-                  className="w-8 h-8 bg-white/8 hover:bg-[#2BC4B5] rounded-lg flex items-center justify-center transition-colors duration-200"
+                  className="w-[38px] h-[38px] bg-white/8 hover:bg-[#2BC4B5] rounded-full flex items-center justify-center transition-colors duration-200"
                 >
                   {s.icon}
                 </a>
@@ -82,14 +82,11 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="font-bold text-white mb-5 text-[10px] uppercase tracking-widest text-white/40">Navegación</h3>
-            <ul className="space-y-2.5">
+            <h3 className="font-bold mb-[22px] text-[10px] uppercase tracking-[0.14em] text-white/40">Navegación</h3>
+            <ul className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-white/55 hover:text-white transition-colors text-sm"
-                  >
+                  <Link href={link.href} className="text-white/55 hover:text-white transition-colors text-sm">
                     {link.label}
                   </Link>
                 </li>
@@ -99,24 +96,28 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-bold text-white mb-5 text-[10px] uppercase tracking-widest text-white/40">Contacto</h3>
-            <ul className="space-y-3.5 text-sm text-white/55">
+            <h3 className="font-bold mb-[22px] text-[10px] uppercase tracking-[0.14em] text-white/40">Contacto</h3>
+            <ul className="flex flex-col gap-4 text-sm text-white/55">
               <li className="flex items-start gap-3">
-                <span className="text-sm mt-0.5 flex-shrink-0" aria-hidden="true">📍</span>
+                <span className="flex-shrink-0" aria-hidden="true">📍</span>
                 <span>Ayacucho, Región Ayacucho, Perú</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-sm mt-0.5 flex-shrink-0" aria-hidden="true">📅</span>
-                <span>Campaña de adopción:<br /><strong className="text-white/80">Viernes 15:00–19:00</strong></span>
+                <span className="flex-shrink-0" aria-hidden="true">📅</span>
+                <span>
+                  Campaña de adopción:
+                  <br />
+                  <strong className="text-white/85">Viernes 15:00–19:00</strong>
+                </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-sm mt-0.5 flex-shrink-0" aria-hidden="true">📧</span>
+                <span className="flex-shrink-0" aria-hidden="true">📧</span>
                 <a href="mailto:contacto@craa.pe" className="hover:text-white transition-colors">
                   contacto@craa.pe
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-sm mt-0.5 flex-shrink-0" aria-hidden="true">📱</span>
+                <span className="flex-shrink-0" aria-hidden="true">📱</span>
                 <a href="https://wa.me/51987654321" className="hover:text-white transition-colors">
                   +51 987 654 321
                 </a>
@@ -126,26 +127,26 @@ export default function Footer() {
 
           {/* Donation CTA */}
           <div>
-            <h3 className="font-bold text-white mb-5 text-[10px] uppercase tracking-widest text-white/40">Ayúdanos</h3>
-            <p className="text-white/55 text-sm mb-5 leading-relaxed">
+            <h3 className="font-bold mb-[22px] text-[10px] uppercase tracking-[0.14em] text-white/40">Ayúdanos</h3>
+            <p className="text-white/55 text-sm mb-[22px] leading-[1.7]">
               Tu donación hace posible que sigamos rescatando y cuidando animales en Ayacucho.
             </p>
             <Link
               href="/donar"
-              className="inline-flex items-center justify-center gap-2 bg-[#2BC4B5] hover:bg-[#22a99c] text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg w-full text-sm active:scale-95"
+              className="flex items-center justify-center gap-2 bg-[#2BC4B5] hover:bg-[#22a99c] text-white font-bold px-6 py-[15px] rounded-full w-full text-sm tracking-[0.02em] transition-all duration-200 active:scale-95"
             >
               DONAR AHORA
             </Link>
-            <div className="mt-4 space-y-1.5 text-xs text-white/30">
+            <div className="mt-5 flex flex-col gap-[7px] text-xs text-white/32">
               <p>BCP: 191-12345678-0-12</p>
               <p>Yape: 987 654 321</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
+        <div className="mt-14 pt-8 border-t border-white/8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/32">
           <p>© {new Date().getFullYear()} CRAA — Conciencia y Rescate Animal Ayacucho. Todos los derechos reservados.</p>
-          <div className="flex gap-5">
+          <div className="flex gap-6">
             <Link href="/privacidad" className="hover:text-white/60 transition-colors">
               Política de privacidad
             </Link>

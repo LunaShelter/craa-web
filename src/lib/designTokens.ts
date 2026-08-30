@@ -1,13 +1,13 @@
 /**
- * CRAA Design Tokens
+ * CRAA Design Tokens — rediseño
  *
- * Single source of truth for brand colors and shared component class strings.
- * All components should use these tokens instead of hard-coded hex values.
+ * Paleta CRAA sobre las formas y la tipografía de Organic:
+ * botones pill (rounded-full), radios grandes, titulares en Caprasimo.
  *
  * Color strategy:
- *   60–70% — cream/neutral background (--background, --surface)
- *   20–30% — dark blue structural color (azul)
- *    5–10% — accent colors used strategically (turquesa, amarillo)
+ *   60–70% — crema/neutral (--background, --surface)
+ *   20–30% — azul oscuro estructural
+ *    5–10% — acentos (turquesa, amarillo, naranja) usados con intención
  */
 
 export const colors = {
@@ -17,23 +17,26 @@ export const colors = {
   azulLight:      '#0a3d6b',
   turquesa:       '#2BC4B5',
   turquesaHover:  '#22a99c',
+  turquesaDeep:   '#1a8f84',  // turquesa legible en texto pequeño
   amarillo:       '#FEE35A',
   amarilloHover:  '#f5d83a',
+  amarilloSoft:   '#F3DE9A',
   naranjaClaro:   '#FEBE69',
   naranja:        '#FC9A36',
   coral:          '#FD544A',
+  coralDeep:      '#c2372f',  // coral legible en texto pequeño
   coralHover:     '#e04540',
   crema:          '#FFF5EC',
   cremaDark:      '#F7EAD8',
 
   // Semantic aliases
-  primary:        '#2BC4B5',  // Main action — teal
+  primary:        '#2BC4B5',
   primaryHover:   '#22a99c',
-  secondary:      '#012B4E',  // Secondary action — dark blue
+  secondary:      '#012B4E',
   secondaryHover: '#024070',
-  accent:         '#FEE35A',  // Accent — yellow (use sparingly)
+  accent:         '#FEE35A',
   accentHover:    '#f5d83a',
-  danger:         '#FD544A',  // Urgent/error
+  danger:         '#FD544A',
   dangerHover:    '#e04540',
   success:        '#10B981',
   warning:        '#FC9A36',
@@ -51,76 +54,94 @@ export const colors = {
   // Borders
   border:         '#E8D9C8',
   borderLight:    '#F0E6D8',
+} as const;
 
-  /** @deprecated use colors.primary */
-  cta:            '#2BC4B5',
-  /** @deprecated use colors.primaryHover */
-  ctaHover:       '#22a99c',
+/** Radios: contenedores sobre-redondeados, controles en pill. */
+export const radii = {
+  pill:    '999px',
+  control: '18px',
+  card:    '28px',
+  panel:   '40px',
+  section: '56px',
 } as const;
 
 // ============================================================
 // BUTTON CLASS STRINGS
-// Shared Tailwind class strings for all button variants.
-// Height: 44px (py-2.5 + text-sm) to 48px (py-3 + text-base)
-// Border radius: rounded-xl (12px) consistently
+// Altura 48–52px · rounded-full · font-bold · foco temático
 // ============================================================
 
-/** Primary CTA button — teal background */
+const btnBase =
+  'inline-flex items-center justify-center gap-2 font-bold px-8 py-4 rounded-full text-sm tracking-[0.02em] transition-all duration-200 active:scale-95 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2BC4B5]';
+
+/** CTA principal — relleno turquesa */
 export const btnPrimary =
-  'inline-flex items-center justify-center gap-2 bg-[#2BC4B5] hover:bg-[#22a99c] text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#2BC4B5] focus:ring-offset-2' as const;
+  `${btnBase} bg-[#2BC4B5] hover:bg-[#22a99c] text-white shadow-[0_8px_20px_-6px_rgba(43,196,181,0.55)]` as const;
 
-/** Secondary CTA button — dark blue */
+/** CTA secundario — azul oscuro sólido */
 export const btnSecondary =
-  'inline-flex items-center justify-center gap-2 bg-[#012B4E] hover:bg-[#024070] text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#012B4E] focus:ring-offset-2' as const;
+  `${btnBase} bg-[#012B4E] hover:bg-[#024070] text-white` as const;
 
-/** Outline button — teal border */
+/** Outline turquesa */
 export const btnOutline =
-  'inline-flex items-center justify-center gap-2 border-2 border-[#2BC4B5] text-[#2BC4B5] hover:bg-[#2BC4B5] hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#2BC4B5] focus:ring-offset-2' as const;
+  `${btnBase} border-2 border-[#2BC4B5] text-[#2BC4B5] hover:bg-[#2BC4B5] hover:text-white` as const;
 
-/** Ghost button — outline dark blue */
+/** Ghost — outline azul oscuro */
 export const btnGhost =
-  'inline-flex items-center justify-center gap-2 border-2 border-[#012B4E] text-[#012B4E] hover:bg-[#012B4E] hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#012B4E] focus:ring-offset-2' as const;
+  `${btnBase} border-2 border-[#012B4E] text-[#012B4E] hover:bg-[#012B4E] hover:text-white` as const;
 
-/** White ghost — for dark backgrounds */
+/** Blanco — para fondos oscuros */
 export const btnWhite =
-  'inline-flex items-center justify-center gap-2 border-2 border-white text-white hover:bg-white hover:text-[#012B4E] font-semibold px-6 py-3 rounded-xl transition-all duration-200 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2' as const;
+  `${btnBase} border-2 border-white text-white hover:bg-white hover:text-[#012B4E]` as const;
 
-/** Danger/urgent button — coral */
+/** Acento amarillo — voluntariado */
+export const btnAccent =
+  `${btnBase} bg-[#FEE35A] hover:bg-[#f5d83a] text-[#012B4E] font-extrabold` as const;
+
+/** Urgencia — coral */
 export const btnDanger =
-  'inline-flex items-center justify-center gap-2 bg-[#FD544A] hover:bg-[#e04540] text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#FD544A] focus:ring-offset-2' as const;
+  `${btnBase} bg-[#FD544A] hover:bg-[#e04540] text-white` as const;
 
-// ============================================================
-// BACKWARD COMPATIBLE ALIASES
-// ============================================================
-
-/** @deprecated use btnPrimary */
-export const ctaButtonClasses =
-  'bg-[#2BC4B5] hover:bg-[#22a99c] text-white' as const;
-
-/** @deprecated use btnPrimary */
-export const ctaButtonClassesFull =
-  `${ctaButtonClasses} font-bold px-8 py-4 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg active:scale-95` as const;
-
-/** @deprecated use cardHeaderDark */
-export const cardHeaderGradient =
-  'bg-[#012B4E]' as const;
+/** Botón pequeño en línea (copiar, filtros) */
+export const btnPillSm =
+  'text-xs font-bold px-[15px] py-2 rounded-full transition-all duration-200 active:scale-95 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2BC4B5]' as const;
 
 // ============================================================
 // CARD PATTERNS
 // ============================================================
 
-/** White card — standard component card */
+/** Card blanca estándar */
 export const cardWhite =
-  'bg-white rounded-2xl border border-[#F0E6D8] shadow-[0_2px_8px_0_rgba(1,43,78,0.07)]' as const;
+  'bg-white rounded-[28px] border border-[#F0E6D8]' as const;
 
-/** Cream card — section background card */
+/** Card crema — superficie de sección */
 export const cardCream =
-  'bg-[#F7EAD8] rounded-2xl border border-[#E8D9C8]' as const;
+  'bg-[#F7EAD8] rounded-[28px] border border-[#E8D9C8]' as const;
 
-/** Dark card — azul background */
+/** Card oscura — azul */
 export const cardDark =
-  'bg-[#012B4E] rounded-2xl' as const;
+  'bg-[#012B4E] rounded-[28px]' as const;
 
-/** Dark card header — for cards with a branded header strip */
-export const cardHeaderDark =
-  'bg-[#012B4E]' as const;
+/** Panel grande (transparencia, campaña) */
+export const panelDark =
+  'bg-[#012B4E] rounded-[44px]' as const;
+
+/** Fila de dato dentro de una card */
+export const dataRow =
+  'bg-[#FFF5EC] rounded-[18px] px-[18px] py-3.5' as const;
+
+// ============================================================
+// TYPE HELPERS
+// ============================================================
+
+export const kicker =
+  'text-[11px] font-bold uppercase tracking-[0.14em] text-[#7A93A8]' as const;
+
+export const headingXl =
+  'font-heading text-[40px] lg:text-[56px] leading-[1.08]' as const;
+
+export const headingLg =
+  'font-heading text-[36px] lg:text-[48px] leading-[1.1]' as const;
+
+/** Fotografía lavada, para que la imagen no flote sobre el crema */
+export const washed =
+  '[filter:saturate(0.88)_contrast(0.94)_brightness(1.03)]' as const;

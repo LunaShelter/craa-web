@@ -37,60 +37,32 @@ interface ImpactCounterProps {
   stats: ImpactStat[];
 }
 
+/**
+ * Impact strip — the featured "rescatados" figure lives in the Hero,
+ * so the strip shows the remaining stats on one aligned baseline.
+ */
 export default function ImpactCounter({ stats }: ImpactCounterProps) {
-  return (
-    <section className="py-20 bg-white" aria-label="Estadísticas de impacto">
-      <div className="max-w-[1200px] mx-auto px-6">
-        {/* Section header */}
-        <div className="mb-14 text-center">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#012B4E] leading-tight tracking-tight mx-auto max-w-lg">
-            Cada número es una vida transformada
-          </h2>
-        </div>
+  const strip = stats.filter((s) => s.id !== 'rescued');
 
-        {/* Bento grid — asymmetric 3+1 layout */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {stats.map((stat, i) => (
-            <div
-              key={stat.id}
-              className={`
-                group rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1
-                ${i === 0
-                  ? 'bg-[#012B4E] text-white col-span-2 lg:col-span-2 lg:row-span-1 flex items-center gap-8'
-                  : 'bg-[#F7EAD8] border border-[#E8D9C8] hover:shadow-[0_4px_16px_0_rgba(1,43,78,0.10)]'
-                }
-              `}
-            >
-              {i === 0 ? (
-                /* Featured stat — large horizontal card */
-                <>
-                  <div>
-                    <div className="text-6xl font-extrabold text-[#FEE35A] leading-none tracking-tight mb-1">
-                      <Counter target={stat.value} />
-                    </div>
-                    <div className="text-white/90 font-semibold text-lg mt-1">{stat.label}</div>
-                    {stat.description && (
-                      <div className="text-white/55 text-sm mt-2 max-w-xs leading-relaxed">{stat.description}</div>
-                    )}
-                  </div>
-                  <div className="text-7xl opacity-20 flex-shrink-0 hidden sm:block" aria-hidden="true">
-                    {stat.icon}
-                  </div>
-                </>
-              ) : (
-                /* Regular stats */
-                <>
-                  <div className="text-3xl mb-3 group-hover:scale-110 transition-transform duration-200" aria-hidden="true">
-                    {stat.icon}
-                  </div>
-                  <div className="text-4xl font-extrabold text-[#012B4E] mb-1 leading-none tracking-tight">
-                    <Counter target={stat.value} />
-                  </div>
-                  <div className="text-sm font-semibold text-[#012B4E] mt-1">{stat.label}</div>
-                  {stat.description && (
-                    <div className="text-xs text-[#7A93A8] mt-2 leading-relaxed">{stat.description}</div>
-                  )}
-                </>
+  return (
+    <section className="pb-16 lg:pb-24 bg-[#FFF5EC]" aria-label="Estadísticas de impacto">
+      <div className="max-w-[1200px] mx-auto px-6">
+        <div className="bg-white border border-[#F0E6D8] rounded-[32px] px-8 py-10 lg:px-12 lg:py-11 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[auto_1px_1fr_1fr_1fr] gap-8 lg:gap-10 items-center shadow-[0_4px_20px_-12px_rgba(1,43,78,0.18)]">
+          <div className="lg:max-w-[190px]">
+            <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-[#7A93A8] mb-2">Nuestro impacto</div>
+            <div className="font-heading text-2xl leading-[1.15] text-[#012B4E]">Cada número es una vida transformada</div>
+          </div>
+
+          <div className="hidden lg:block w-px h-[82px] bg-[#F0E6D8]" aria-hidden="true" />
+
+          {strip.map((stat) => (
+            <div key={stat.id}>
+              <div className="font-heading text-[46px] text-[#012B4E] leading-none">
+                <Counter target={stat.value} />
+              </div>
+              <div className="text-sm font-semibold text-[#012B4E] mt-1.5">{stat.label}</div>
+              {stat.description && (
+                <div className="text-xs text-[#7A93A8] mt-1">{stat.description}</div>
               )}
             </div>
           ))}
